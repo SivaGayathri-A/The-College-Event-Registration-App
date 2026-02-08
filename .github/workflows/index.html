@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Events - Discover & Join Events</title>
+    <meta name="description" content="Discover and join exciting campus events, workshops, and activities. Connect with your community.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+        <header class="header">
+            <div class="header-content">
+                <div class="user-welcome">
+                    <div class="user-avatar">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23667eea'/%3E%3Ctext x='50' y='65' font-size='40' fill='white' text-anchor='middle' font-family='Arial'%3EAJ%3C/text%3E%3C/svg%3E" alt="User">
+                    </div>
+                    <div class="welcome-text">
+                        <span class="welcome-label">Welcome back,</span>
+                        <h1 class="user-name">Alex Johnson</h1>
+                    </div>
+                </div>
+                <button class="notification-btn" id="notificationBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <span class="notification-badge">3</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="search-section">
+                <div class="search-bar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" placeholder="Search events, clubs, or venues" id="searchInput">
+                </div>
+            </div>
+
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">All Events</button>
+                <button class="category-tab" data-category="workshops">Workshops</button>
+                <button class="category-tab" data-category="sports">Sports</button>
+                <button class="category-tab" data-category="cultural">Cultural</button>
+            </div>
+
+            <section class="featured-section">
+                <div class="section-header">
+                    <h2>Featured Events</h2>
+                    <button class="see-all-btn">See all</button>
+                </div>
+                <div class="featured-events" id="featuredEvents">
+                    <!-- Featured events will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <section class="upcoming-section">
+                <h2>Upcoming This Week</h2>
+                <div class="upcoming-events" id="upcomingEvents">
+                    <!-- Upcoming events will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-page="home">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                </svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" data-page="tickets">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+                <span>Tickets</span>
+            </button>
+            <button class="nav-item add-btn" id="createEventBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+            </button>
+            <button class="nav-item" data-page="clubs">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Clubs</span>
+            </button>
+            <button class="nav-item" data-page="dashboard">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 6v6l4 2"></path>
+                </svg>
+                <span>Profile</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Event Details Page -->
+    <div id="eventDetailsPage" class="page">
+        <div class="event-details-container">
+            <header class="details-header">
+                <button class="back-btn" id="backBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>Event Details</h2>
+                <button class="share-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="18" cy="5" r="3"></circle>
+                        <circle cx="6" cy="12" r="3"></circle>
+                        <circle cx="18" cy="19" r="3"></circle>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                    </svg>
+                </button>
+            </header>
+
+            <div class="event-details-content" id="eventDetailsContent">
+                <!-- Event details will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="page">
+        <header class="dashboard-header">
+            <div class="dashboard-user">
+                <div class="user-avatar">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23667eea'/%3E%3Ctext x='50' y='65' font-size='40' fill='white' text-anchor='middle' font-family='Arial'%3EAJ%3C/text%3E%3C/svg%3E" alt="User">
+                </div>
+                <div class="dashboard-welcome">
+                    <h1>Dashboard</h1>
+                    <p>Welcome back, Alex</p>
+                </div>
+            </div>
+            <button class="notification-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+            </button>
+        </header>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <span class="stat-label">EVENTS</span>
+                <span class="stat-value">12</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">ACTIVE</span>
+                <span class="stat-value">450</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">TOTAL</span>
+                <span class="stat-value">1.2k</span>
+            </div>
+        </div>
+
+        <div class="managed-events-section">
+            <div class="section-header">
+                <h2>My Managed Events</h2>
+                <button class="filter-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="4" y1="6" x2="16" y2="6"></line>
+                        <line x1="8" y1="12" x2="20" y2="12"></line>
+                        <line x1="4" y1="18" x2="12" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="search-bar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" placeholder="Search events...">
+            </div>
+
+            <div class="managed-events" id="managedEvents">
+                <!-- Managed events will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <nav class="bottom-nav">
+            <button class="nav-item" data-page="home">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                </svg>
+                <span>Dashboard</span>
+            </button>
+            <button class="nav-item" data-page="events">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Events</span>
+            </button>
+            <button class="nav-item" data-page="teams">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Teams</span>
+            </button>
+            <button class="nav-item active" data-page="settings">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"></path>
+                </svg>
+                <span>Settings</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Participants Page -->
+    <div id="participantsPage" class="page">
+        <header class="participants-header">
+            <button class="back-btn" id="participantsBackBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            <div class="participants-title">
+                <h1>Participants</h1>
+                <p id="participantsEventName">Tech Summit 2024</p>
+            </div>
+            <div class="participants-count">
+                <span id="totalParticipants">124</span> Total
+                <span class="registered-label">REGISTERED</span>
+            </div>
+        </header>
+
+        <div class="participants-controls">
+            <div class="search-bar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" placeholder="Search student name..." id="participantSearch">
+            </div>
+            <button class="filter-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="4" y1="6" x2="16" y2="6"></line>
+                    <line x1="8" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="12" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="participants-tabs">
+            <button class="participant-tab active" data-status="all">ALL</button>
+            <button class="participant-tab" data-status="pending">PENDING</button>
+        </div>
+
+        <button class="export-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Export CSV
+        </button>
+
+        <div class="participants-list" id="participantsList">
+            <!-- Participants will be populated by JavaScript -->
+        </div>
+
+        <nav class="bottom-nav">
+            <button class="nav-item" data-page="dashboard">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                <span>Dashboard</span>
+            </button>
+            <button class="nav-item active">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Participants</span>
+            </button>
+            <button class="nav-item" data-page="events">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Events</span>
+            </button>
+            <button class="nav-item" data-page="settings">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"></path>
+                </svg>
+                <span>Settings</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Create Event Page -->
+    <div id="createEventPage" class="page">
+        <header class="create-header">
+            <button class="close-btn" id="closeCreateBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h1>Create New Event</h1>
+            <div class="step-indicator">
+                <span class="step-text">STEP 1 OF 4</span>
+                <span class="step-label">Basic Information</span>
+            </div>
+        </header>
+
+        <form class="create-event-form" id="createEventForm">
+            <div class="form-section">
+                <label for="eventName">Event Name</label>
+                <input type="text" id="eventName" placeholder="e.g. Annual Tech Symposium" required>
+            </div>
+
+            <div class="form-section">
+                <label>Category</label>
+                <div class="category-buttons">
+                    <button type="button" class="category-btn active" data-category="workshop">Workshop</button>
+                    <button type="button" class="category-btn" data-category="seminar">Seminar</button>
+                    <button type="button" class="category-btn" data-category="social">Social</button>
+                    <button type="button" class="category-btn" data-category="sports">Sports</button>
+                    <button type="button" class="category-btn" data-category="competition">Competition</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="section-title">Logistics</label>
+                
+                <label for="venue">Venue / Location</label>
+                <input type="text" id="venue" placeholder="Main Campus Auditorium" required>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="eventDate">Date</label>
+                        <input type="date" id="eventDate" required>
+                    </div>
+                    <div class="form-col">
+                        <label for="eventTime">Time</label>
+                        <input type="time" id="eventTime" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="section-title">Event Media</label>
+                <label>Banner Image</label>
+                <div class="image-upload" id="imageUpload">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                    <p>Click to upload banner</p>
+                    <span>16:9 Aspect Ratio Recommended (Max 5MB)</span>
+                </div>
+                <input type="file" id="bannerInput" accept="image/*" style="display: none;">
+            </div>
+
+            <div class="form-section">
+                <label for="description">Description</label>
+                <textarea id="description" rows="4" placeholder="Tell students what this event is about..." required></textarea>
+            </div>
+
+            <div class="form-section">
+                <label class="section-title">Registration Form</label>
+                <p class="form-description">Customize what information you want to collect from attendees.</p>
+                
+                <div class="form-fields">
+                    <div class="form-field-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>Full Name</span>
+                        <span class="required-badge">REQUIRED</span>
+                    </div>
+                    <div class="form-field-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>University Email</span>
+                        <span class="required-badge">REQUIRED</span>
+                    </div>
+                    <div class="form-field-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        </svg>
+                        <span>T-Shirt Size</span>
+                        <button type="button" class="remove-field-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <button type="button" class="add-question-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Add Question
+                </button>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="save-draft-btn">Save Draft</button>
+                <button type="submit" class="continue-btn">
+                    Continue
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Register for Event</h2>
+                <button class="modal-close" id="closeModal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <p class="modal-description">Please fill in your details to secure your spot</p>
+            
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="fullName">FULL NAME</label>
+                    <input type="text" id="fullName" placeholder="John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentId">STUDENT ID</label>
+                    <input type="text" id="studentId" placeholder="e.g. 2024-10045" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="department">ACADEMIC DEPARTMENT</label>
+                    <select id="department" required>
+                        <option value="">Computer Science</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="business">Business</option>
+                        <option value="arts">Arts</option>
+                        <option value="science">Science</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="confirm-btn">Confirm Registration</button>
+                <p class="terms-text">By registering, you agree to our Code of Conduct and Privacy Policy</p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
