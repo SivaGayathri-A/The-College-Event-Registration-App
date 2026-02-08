@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy Your Event Management Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .option {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .option-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.recommended {
+            background: #10b981;
+        }
+
+        .option h3 {
+            color: #1e293b;
+            font-size: 1.3rem;
+        }
+
+        .option p {
+            color: #64748b;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .steps {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .steps ol {
+            margin-left: 20px;
+        }
+
+        .steps li {
+            color: #475569;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #5568d3;
+            transform: scale(1.05);
+        }
+
+        .quickstart {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .quickstart h2 {
+            margin-bottom: 15px;
+        }
+
+        .quickstart p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .quickstart .btn {
+            background: white;
+            color: #667eea;
+        }
+
+        .files-list {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .files-list h4 {
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            background: white;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .file-icon {
+            width: 30px;
+            height: 30px;
+            background: #667eea;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚀 Deploy Your Event Management Website</h1>
+        <p class="subtitle">Choose the easiest way to share your website with employees online</p>
+
+        <div class="option">
+            <div class="option-header">
+                <h3>1. Netlify Drop</h3>
+                <span class="badge recommended">EASIEST</span>
+                <span class="badge">5 MINUTES</span>
+            </div>
+            <p><strong>Perfect for quick deployment!</strong> Just drag and drop your files and get an instant link.</p>
+            <div class="steps">
+                <ol>
+                    <li>Go to <a href="https://app.netlify.com/drop" target="_blank">https://app.netlify.com/drop</a>
+                    </li>
+                    <li>Drag the entire <code>e:\projects</code> folder onto the page</li>
+                    <li>Wait 30 seconds for deployment</li>
+                    <li>Get your link: <code>https://xyz.netlify.app</code></li>
+                    <li>Share with employees!</li>
+                </ol>
+            </div>
+            <a href="https://app.netlify.com/drop" target="_blank" class="btn">Deploy on Netlify →</a>
+        </div>
+
+        <div class="option">
+            <div class="option-header">
+                <h3>2. GitHub Pages</h3>
+                <span class="badge">FREE FOREVER</span>
+            </div>
+            <p><strong>Best for long-term hosting.</strong> Professional and reliable, used by millions of developers.
+            </p>
+            <div class="steps">
+                <ol>
+                    <li>Create account at <a href="https://github.com/signup" target="_blank">GitHub.com</a></li>
+                    <li>Create new repository (click + icon → New repository)</li>
+                    <li>Upload index.html, styles.css, and script.js</li>
+                    <li>Go to Settings → Pages</li>
+                    <li>Select "main" branch and save</li>
+                    <li>Your site will be at: <code>https://username.github.io/repo-name/</code></li>
+                </ol>
+            </div>
+            <a href="https://github.com/new" target="_blank" class="btn">Create Repository →</a>
+        </div>
+
+        <div class="option">
+            <div class="option-header">
+                <h3>3. Vercel</h3>
+                <span class="badge">FAST</span>
+            </div>
+            <p><strong>Lightning-fast hosting.</strong> Professional platform with excellent performance.</p>
+            <div class="steps">
+                <ol>
+                    <li>Go to <a href="https://vercel.com/new" target="_blank">Vercel.com</a></li>
+                    <li>Sign up with email or GitHub</li>
+                    <li>Click "Deploy" and drag your project folder</li>
+                    <li>Get instant URL: <code>https://your-project.vercel.app</code></li>
+                </ol>
+            </div>
+            <a href="https://vercel.com/new" target="_blank" class="btn">Deploy on Vercel →</a>
+        </div>
+
+        <div class="quickstart">
+            <h2>⚡ Quickest Method</h2>
+            <p>Use Netlify Drop - No account needed, just drag and drop!</p>
+            <a href="https://app.netlify.com/drop" target="_blank" class="btn">Start Deploying Now →</a>
+        </div>
+
+        <div class="files-list">
+            <h4>📁 Files to Deploy (All in e:\projects folder):</h4>
+            <div class="file-item">
+                <div class="file-icon">HTML</div>
+                <span><strong>index.html</strong> - Main website file</span>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">CSS</div>
+                <span><strong>styles.css</strong> - Design and styling</span>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">JS</div>
+                <span><strong>script.js</strong> - Functionality and features</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
